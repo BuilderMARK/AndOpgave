@@ -26,5 +26,5 @@
         android:id="@+id/nav_createCar"
         android:name="com.example.andopgave.createCar.CreateCar"
         android:label="Create Car"
-        tools:layout="@layout/create_car_fragment" />
+        tools:layout="@layout/fragment_create_car" />
 </navigation>
