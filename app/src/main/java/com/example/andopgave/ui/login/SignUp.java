@@ -1,13 +1,19 @@
+
 package com.example.andopgave.ui.login;
 
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.andopgave.R;
 import com.example.andopgave.model.User;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -33,11 +39,13 @@ public class SignUp extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         //Signup button event listener
+        EditText finalName = name;
+        EditText finalEmail = email;
         login.setOnClickListener(view -> {
             //Creating User Object
             User u = new User();
-            u.username = name.getText().toString();
-            u.email = email.getText().toString();
+            u.username = finalName.getText().toString();
+            u.email = finalEmail.getText().toString();
             u.password = password.getText().toString();
 
             //Pushing to firebase (This might need to be reworked - Not optimal)
@@ -47,12 +55,12 @@ public class SignUp extends AppCompatActivity {
 
             //CLEAN UP FOR LATER:: Delete everything under this?
         // Get email & name from google - Not need ATM but might be usefull later
-        /*
 
         GoogleSignInOptions googleSignInOptions;
     GoogleSignInClient googleSignInClient;
-    TextView name,email;email = findViewById(R.id.email);
-        name = findViewById(R.id.name);
+
+        email = findViewById(R.id.EmailFromSignup);
+        name = findViewById(R.id.NameFromSignup);
 
 
         googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
@@ -64,6 +72,8 @@ public class SignUp extends AppCompatActivity {
             String personEmail = account.getEmail();
             name.setText(personName);
             email.setText(personEmail);
-        }*/
+        }
+
     }
 }
+

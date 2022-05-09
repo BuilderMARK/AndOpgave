@@ -1,4 +1,4 @@
-package com.example.andopgave.createCar;
+package com.example.andopgave.ui.createCar;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;

@@ -1,4 +1,4 @@
-package com.example.andopgave.createCar;
+package com.example.andopgave.ui.createCar;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.text.Editable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.andopgave.R;
 import com.example.andopgave.databinding.FragmentCreateCarBinding;
-import com.example.andopgave.model.CarData;
 
 public class CreateCar extends Fragment {
 
