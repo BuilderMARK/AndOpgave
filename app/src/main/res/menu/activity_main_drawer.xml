@@ -20,5 +20,13 @@
             android:id="@+id/nav_createCar"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Create Car" />
+        <item
+            android:id="@+id/nav_dashBoard"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="DashBoard" />
+        <item
+            android:id="@+id/nav_fragmentCarlist"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Carlist" />
     </group>
 </menu>

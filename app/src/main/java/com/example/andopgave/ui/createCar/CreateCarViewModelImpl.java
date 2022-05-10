@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.andopgave.WebService.PostCarRepository;
-import com.example.andopgave.model.CarData;
+import com.example.andopgave.model.Data.CarData;
 
 public class CreateCarViewModelImpl extends ViewModel implements CreateCarViewModel {
     PostCarRepository postCarRepository;

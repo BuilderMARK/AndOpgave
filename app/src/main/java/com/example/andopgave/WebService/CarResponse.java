@@ -1,6 +1,6 @@
 package com.example.andopgave.WebService;
 
-import com.example.andopgave.model.CarData;
+import com.example.andopgave.model.Data.CarData;
 
 public class CarResponse {
     private String registration_number, make,model;

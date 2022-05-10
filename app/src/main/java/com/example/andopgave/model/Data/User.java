@@ -1,4 +1,4 @@
-package com.example.andopgave.model;
+package com.example.andopgave.model.Data;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 

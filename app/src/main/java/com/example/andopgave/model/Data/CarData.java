@@ -1,4 +1,4 @@
-package com.example.andopgave.model;
+package com.example.andopgave.model.Data;
 
 public class CarData {
     public String registration_number, make,model;

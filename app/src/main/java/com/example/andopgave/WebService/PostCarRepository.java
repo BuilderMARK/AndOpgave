@@ -5,7 +5,7 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.andopgave.model.CarData;
+import com.example.andopgave.model.Data.CarData;
 
 import retrofit2.Call;
 import retrofit2.Callback;
