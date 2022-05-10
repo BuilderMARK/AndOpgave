@@ -1,79 +1,77 @@
 
 package com.example.andopgave.ui.login;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-
+import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.andopgave.R;
-import com.example.andopgave.model.User;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.example.andopgave.ui.home.HomeFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUp extends AppCompatActivity {
-    private DatabaseReference mDatabase;
+    private EditText et_Email,et_Name,et_Password;
+    private Button btn_signUp, btn_Cancel;
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        et_Email = findViewById(R.id.EmailFromSignup);
+        et_Name = findViewById(R.id.NameFromSignup);
+        et_Password = findViewById(R.id.PasswordFromSignup);
+        btn_signUp = findViewById(R.id.SignupButtonOnSignup);
+        btn_Cancel = findViewById(R.id.CancelButtonOnSignup);
+        mAuth = FirebaseAuth.getInstance();
+        btn_signUp.setOnClickListener(view -> {
+            createUser();
 
-        //Buttons and input fields
-        Button login = findViewById(R.id.SignupButtonOnSignup);
-        EditText name = findViewById(R.id.NameFromSignup);
-        EditText email = findViewById(R.id.EmailFromSignup);
-        EditText password = findViewById(R.id.PasswordFromSignup);
-
-        //Firebase database reference
-
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-
-        //Signup button event listener
-        EditText finalName = name;
-        EditText finalEmail = email;
-        login.setOnClickListener(view -> {
-            //Creating User Object
-            User u = new User();
-            u.username = finalName.getText().toString();
-            u.email = finalEmail.getText().toString();
-            u.password = password.getText().toString();
-
-            //Pushing to firebase (This might need to be reworked - Not optimal)
-            mDatabase.child("users").child(u.username).setValue(u);
         });
+        btn_Cancel.setOnClickListener(view -> {
+            Log.e("SignUp", "onCreate: Virker ikke lige pt ");
+        });
+    }
 
-
-            //CLEAN UP FOR LATER:: Delete everything under this?
-        // Get email & name from google - Not need ATM but might be usefull later
-
-        GoogleSignInOptions googleSignInOptions;
-    GoogleSignInClient googleSignInClient;
-
-        email = findViewById(R.id.EmailFromSignup);
-        name = findViewById(R.id.NameFromSignup);
-
-
-        googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        googleSignInClient = GoogleSignIn.getClient(this,googleSignInOptions);
-
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        if (account !=null){
-            String personName = account.getDisplayName();
-            String personEmail = account.getEmail();
-            name.setText(personName);
-            email.setText(personEmail);
+    private void createUser() {
+        String Email, Name,Password;
+        Email = et_Email.getText().toString();
+        Name = et_Name.getText().toString();
+        Password = et_Password.getText().toString();
+        if (TextUtils.isEmpty(Email)){
+            et_Email.setError("Email cant be empty");
+            et_Email.requestFocus();
         }
-
+        else if (TextUtils.isEmpty(Name))
+    {
+            et_Name.setError("Name cant be empty");
+            et_Name.requestFocus();
+        }
+        else if (TextUtils.isEmpty(Password))
+        {
+            et_Password.setError("Password cant be empty");
+            et_Password.requestFocus();
+        }
+        else {
+            mAuth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()){
+                        Toast.makeText(SignUp.this, "User Signup successfull", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent (SignUp.this, Login.class));
+                    }else{
+                        Toast.makeText(SignUp.this, "User Signup Failed" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+        }
     }
 }
 
