@@ -30,11 +30,11 @@ EditText editTextEmail, editTextPassword;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        btn_googleLogin = findViewById(R.id.GoogleLogin);
-        btn_login = findViewById(R.id.btn_Login);
-        btn_signUp = findViewById(R.id.btn_SignUP);
-         editTextEmail = findViewById(R.id.et_Email);
-         editTextPassword = findViewById(R.id.et_Password);
+       // btn_googleLogin = findViewById(R.id.GoogleLogin);
+        btn_login = findViewById(R.id.btn_login);
+        btn_signUp = findViewById(R.id.btn_SignUp);
+         editTextEmail = findViewById(R.id.tv_email);
+         editTextPassword = findViewById(R.id.tv_password);
         mAuth = FirebaseAuth.getInstance();
 
         btn_login.setOnClickListener(view -> {

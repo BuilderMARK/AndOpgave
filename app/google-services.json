@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "52339238370",
+    "firebase_url": "https://andopgave-default-rtdb.firebaseio.com",
+    "project_id": "andopgave",
+    "storage_bucket": "andopgave.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52339238370:android:a0edd18bdd0e6002af85bb",
+        "android_client_info": {
+          "package_name": "com.example.andopgave"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52339238370-sc5u0b06en0ktl65juspnq8bmo9nbv0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9lnolC6rQcTWzVXm6OkIzG_IJ4Rqn8AI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52339238370-sc5u0b06en0ktl65juspnq8bmo9nbv0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
