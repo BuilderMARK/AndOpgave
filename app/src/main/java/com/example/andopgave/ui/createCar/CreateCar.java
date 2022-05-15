@@ -89,6 +89,8 @@ public class CreateCar extends Fragment {
             //Pushing to firebase
             mDatabase.child(mAuth.getCurrentUser().getUid()).child(carData.getRegistration_number()).setValue(carData);
             Log.e("Database", "Uploaded til database " + carData.getRegistration_number()+ " " + carData.make +" "+ carData.model);
+            mDatabase.child("AllCars").child(carData.getRegistration_number()).setValue(carData);
+
 
         });
     }

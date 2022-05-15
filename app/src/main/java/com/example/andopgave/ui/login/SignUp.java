@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.andopgave.R;
-import com.example.andopgave.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,11 +24,11 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        et_Email = findViewById(R.id.EmailFromSignup);
+        et_Email = findViewById(R.id.tv_email);
         et_Name = findViewById(R.id.NameFromSignup);
-        et_Password = findViewById(R.id.PasswordFromSignup);
-        btn_signUp = findViewById(R.id.SignupButtonOnSignup);
-        btn_Cancel = findViewById(R.id.CancelButtonOnSignup);
+        et_Password = findViewById(R.id.tv_password);
+        btn_signUp = findViewById(R.id.btn_login);
+        btn_Cancel = findViewById(R.id.btn_SignUp);
         mAuth = FirebaseAuth.getInstance();
         btn_signUp.setOnClickListener(view -> {
             createUser();

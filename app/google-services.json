@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "52339238370",
+    "firebase_url": "https://andopgave-default-rtdb.firebaseio.com",
     "project_id": "andopgave",
     "storage_bucket": "andopgave.appspot.com"
   },

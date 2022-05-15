@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/EmailFromSignup"
+        android:id="@+id/tv_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/NameFromSignup" />
 
     <EditText
-        android:id="@+id/PasswordFromSignup"
+        android:id="@+id/tv_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -55,10 +55,10 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EmailFromSignup" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_email" />
 
     <Button
-        android:id="@+id/CancelButtonOnSignup"
+        android:id="@+id/btn_SignUp"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -66,10 +66,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.318"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PasswordFromSignup" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_password" />
 
     <Button
-        android:id="@+id/SignupButtonOnSignup"
+        android:id="@+id/btn_login"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -77,7 +77,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.681"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PasswordFromSignup" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_password" />
 
 
 
