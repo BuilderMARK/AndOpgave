@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndOpgave">
         <activity
+            android:name=".allcarlist"
+            android:exported="false" />
+        <activity
             android:name=".ui.fragmentcarlist.Carlist"
             android:exported="false" />
         <activity

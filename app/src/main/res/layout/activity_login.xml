@@ -18,8 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.171" />
-
-
+    // TODO: Fjern android:text
     <EditText
         android:id="@+id/tv_email"
         android:layout_width="wrap_content"
@@ -27,6 +26,7 @@
         android:drawableStart="@drawable/ic_mail"
         android:ems="10"
         android:hint="Email"
+        android:text="mark@gmail.com"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.459" />
-
+    // TODO: Fjern android:text
     <EditText
         android:id="@+id/tv_password"
         android:layout_width="wrap_content"
@@ -42,6 +42,7 @@
         android:drawableStart="@drawable/ic_lock"
         android:ems="10"
         android:hint="Password"
+        android:text="123456"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

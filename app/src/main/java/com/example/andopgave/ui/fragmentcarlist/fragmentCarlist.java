@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.andopgave.R;
 import com.example.andopgave.model.Data.CarData;
@@ -23,9 +25,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class fragmentCarlist extends Fragment {
+public class fragmentCarlist extends Fragment implements View.OnClickListener {
 
     private FragmentCarlistViewModel mViewModel;
     DatabaseReference databaseReference;
@@ -33,6 +36,8 @@ public class fragmentCarlist extends Fragment {
     carAdapter myAdapter;
     RecyclerView recyclerView;
     ArrayList<CarData> carDataList;
+    Button btn_Edit, btn_Delete;
+    CarData carData;
 
     public static fragmentCarlist newInstance() {
         return new fragmentCarlist();
@@ -52,12 +57,13 @@ public class fragmentCarlist extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        btn_Delete = view.findViewById(R.id.btndelete);
+        btn_Edit = view.findViewById(R.id.btnedit);
         Log.e("ListView", "onCreateView: " + mAuth.getUid());
         carDataList = new ArrayList<>();
         myAdapter = new carAdapter(carDataList);
         recyclerView.setAdapter(myAdapter);
-
+        onClick(view);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -75,5 +81,26 @@ public class fragmentCarlist extends Fragment {
 
         });
         return view;
+
+
+    }
+
+
+    private void deleteCar(){
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("AllCars").child("BD23974");
+        databaseReference.removeValue();
+        System.out.printf("DeleteCar Metode");
+        Log.e("Delete Car", "deleteCar: ");
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btndelete:
+                deleteCar();
+                System.out.printf("Btn Delete");
+
     }
 }
+    }

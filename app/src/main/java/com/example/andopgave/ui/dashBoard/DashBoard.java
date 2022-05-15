@@ -33,7 +33,7 @@ public class DashBoard extends Fragment {
     private DashBoardViewModelImpl mViewModel;
     DatabaseReference databaseReference;
     FirebaseAuth mAuth;
-    carAdapter myAdapter;
+    allCarAdapter myAdapter;
     RecyclerView recyclerView;
     ArrayList<CarData> carDataList;
 
@@ -49,7 +49,7 @@ public class DashBoard extends Fragment {
         Log.e("Before setlayoutmag", "Recyclerview is null: " + (recyclerView == null) );
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         carDataList = new ArrayList<>();
-        myAdapter = new carAdapter(carDataList);
+        myAdapter = new allCarAdapter(carDataList);
         recyclerView.setAdapter(myAdapter);
 
         databaseReference.addValueEventListener(new ValueEventListener() {

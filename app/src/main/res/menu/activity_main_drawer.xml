@@ -3,32 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <!--<item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" /> -->
+    <group android:checkableBehavior="all">
 
         <item
             android:id="@+id/nav_dashBoard"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_baseline_dashboard_24"
             android:title="DashBoard" />
         <item
             android:id="@+id/nav_createCar"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_baseline_create_24"
             android:title="Create Car" />
 
         <item
             android:id="@+id/nav_fragmentCarlist"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_person"
             android:title="My Cars" />
+        <item
+            android:id="@+id/nav_Logout"
+            android:icon="@drawable/ic_lock"
+            android:title="Log Out" />
     </group>
 </menu>

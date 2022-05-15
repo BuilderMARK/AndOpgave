@@ -10,4 +10,14 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="car_plate">Car Plate:</string>
+    <string name="car_make">Car Make:</string>
+    <string name="bilm_rke">BIlmærke</string>
+    <string name="nummer_plade">Nummer Plade</string>
+    <string name="bil_model">Bil model</string>
+    <string name="price">Price :</string>
+    <string name="car_model">Car Model:</string>
+    <string name="pris">Pris</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
 </resources>
