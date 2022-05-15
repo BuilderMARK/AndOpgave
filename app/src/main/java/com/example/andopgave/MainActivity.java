@@ -3,10 +3,14 @@ package com.example.andopgave;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 
+import com.example.andopgave.model.Data.CarData;
+import com.example.andopgave.model.Data.User;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -15,11 +19,23 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.andopgave.databinding.ActivityMainBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private DatabaseReference databaseReference;
+    private FirebaseAuth mAuth;
+    String name = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +63,28 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+
+        //Firebase Reference
+        mAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference(mAuth.getUid());
+
+        //Reference to view
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUserMail = (TextView) headerView.findViewById(R.id.NavBarName);
+
+        //Get UserEmail From firebase
+        String Username = mAuth.getCurrentUser().getEmail();
+        if (Username == null || Username == ""){
+            navUserMail.setText("Welcome");
+        } else {
+            navUserMail.setText(Username);
+        }
+
+
+
+
     }
 
     @Override
