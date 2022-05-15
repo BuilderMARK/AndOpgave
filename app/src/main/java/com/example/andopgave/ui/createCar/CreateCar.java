@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class CreateCar extends Fragment {
 
-    private Button btn_Search, btn_Create;
+    private Button btn_Search, btn_Create, btn_Cancel;
     private EditText et_seacrhReg, et_price, et_regNumber, et_make, et_model, et_modelYear;
     private FragmentCreateCarBinding binding;
     private CreateCarViewModelImpl mViewModel;
@@ -71,6 +71,7 @@ public class CreateCar extends Fragment {
         //Knapper
         btn_Search = binding.BtnSearchCar;
         btn_Create = binding.BtnCreateCar;
+        //btn_Cancel = binding.BtnCancel; //TODO: Hjælp mark (:
 
     }
 

@@ -36,6 +36,7 @@ public class SignUp extends AppCompatActivity {
         });
         btn_Cancel.setOnClickListener(view -> {
             Log.e("SignUp", "onCreate: Virker ikke lige pt ");
+            startActivity(new Intent (SignUp.this, Login.class));
         });
     }
 
