@@ -1,4 +1,4 @@
-package com.example.andopgave.WebService;
+package com.example.andopgave.model.Data.WebService;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

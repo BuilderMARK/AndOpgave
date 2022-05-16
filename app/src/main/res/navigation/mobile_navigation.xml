@@ -10,7 +10,11 @@
         android:id="@+id/nav_createCar"
         android:name="com.example.andopgave.ui.createCar.CreateCar"
         android:label="Create Car"
-        tools:layout="@layout/fragment_create_car" />
+        tools:layout="@layout/fragment_create_car" >
+        <action
+            android:id="@+id/action_nav_createCar_to_nav_dashBoard"
+            app:destination="@id/nav_dashBoard" />
+    </fragment>
     <fragment
         android:id="@+id/nav_dashBoard"
         android:name="com.example.andopgave.ui.dashBoard.DashBoard"
