@@ -64,6 +64,7 @@ public class fragmentCarlist extends Fragment implements View.OnClickListener {
         myAdapter = new carAdapter(carDataList);
         recyclerView.setAdapter(myAdapter);
         onClick(view);
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
