@@ -3,6 +3,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
+
+import com.example.andopgave.model.Data.DAO;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import androidx.navigation.NavController;
@@ -14,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.andopgave.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Firebase Reference
-        mAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference(mAuth.getUid());
+        mAuth = DAO.getmAuth();
+        databaseReference = DAO.getmDatabase().getReference(mAuth.getUid());
 
         //Reference to view
         View headerView = navigationView.getHeaderView(0);

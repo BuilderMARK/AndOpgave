@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.example.andopgave.R;
 import com.example.andopgave.model.Data.CarData;
+import com.example.andopgave.model.Data.DAO;
 import com.example.andopgave.ui.fragmentcarlist.FragmentCarlistViewModel;
 import com.example.andopgave.ui.fragmentcarlist.carAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -43,8 +44,8 @@ public class DashBoard extends Fragment {
 
 
         View view = inflater.inflate(R.layout.fragment_dash_board, container, false);
-        mAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference("AllCars");
+        mAuth = DAO.getmAuth();
+        databaseReference = DAO.getmDatabase().getReference("AllCars");
         recyclerView = view.findViewById(R.id.listViewCurrentUser);
         Log.e("Before setlayoutmag", "Recyclerview is null: " + (recyclerView == null) );
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

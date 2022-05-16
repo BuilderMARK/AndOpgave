@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.example.andopgave.databinding.FragmentCreateCarBinding;
 import com.example.andopgave.model.Data.CarData;
+import com.example.andopgave.model.Data.DAO;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,10 +46,14 @@ public class CreateCar extends Fragment  {
     private FragmentCreateCarBinding binding;
     private CreateCarViewModelImpl mViewModel;
     private ImageView imageView;
-    private DatabaseReference mDatabase;
-    private FirebaseAuth mAuth;
+
     private static final int PICK_IMAGE_REQUEST =1;
     private Uri imageUrl;
+
+    //FIREBASE HERE
+
+    private FirebaseDatabase mDatabase;
+    private FirebaseAuth mAuth;
 
     FirebaseStorage storage;
     @Override
@@ -61,8 +66,9 @@ public class CreateCar extends Fragment  {
         observer();
         onClickListeners();
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        mAuth = FirebaseAuth.getInstance();
+        mDatabase = DAO.getmDatabase();
+        mAuth = DAO.getmAuth();
+
 
 
 
@@ -116,9 +122,9 @@ public class CreateCar extends Fragment  {
             carData.model_year = Integer.parseInt(et_modelYear.getText().toString());
             carData.price = Integer.parseInt(et_price.getText().toString());
             //Pushing to firebase
-            mDatabase.child(mAuth.getCurrentUser().getUid()).child(carData.getRegistration_number()).setValue(carData);
+            mDatabase.getReference().child(mAuth.getCurrentUser().getUid()).child(carData.getRegistration_number()).setValue(carData);
             Log.e("Database", "Uploaded til database " + carData.getRegistration_number() + " " + carData.make + " " + carData.model);
-            mDatabase.child("AllCars").child(carData.getRegistration_number()).setValue(carData);
+            mDatabase.getReference().child("AllCars").child(carData.getRegistration_number()).setValue(carData);
         });
         btn_Picture.setOnClickListener(view -> {
 

@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.andopgave.R;
 import com.example.andopgave.model.Data.CarData;
+import com.example.andopgave.model.Data.DAO;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,9 +51,9 @@ public class fragmentCarlist extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_carlist_fragment, container, false);
-        mAuth = FirebaseAuth.getInstance();
+        mAuth = DAO.getmAuth();
         mAuth.getCurrentUser().getUid();
-        databaseReference = FirebaseDatabase.getInstance().getReference(mAuth.getUid());
+        databaseReference = DAO.getmDatabase().getReference(mAuth.getUid());
 
 
         recyclerView = view.findViewById(R.id.recyclerView);

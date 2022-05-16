@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.andopgave.MainActivity;
 import com.example.andopgave.R;
+import com.example.andopgave.model.Data.DAO;
 import com.example.andopgave.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -35,7 +36,7 @@ EditText editTextEmail, editTextPassword;
         btn_signUp = findViewById(R.id.btn_SignUp);
          editTextEmail = findViewById(R.id.tv_email);
          editTextPassword = findViewById(R.id.tv_password);
-        mAuth = FirebaseAuth.getInstance();
+        mAuth = DAO.getmAuth();
 
         btn_login.setOnClickListener(view -> {
             loginUser();
