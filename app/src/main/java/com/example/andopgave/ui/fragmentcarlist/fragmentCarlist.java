@@ -44,7 +44,6 @@ public class fragmentCarlist extends Fragment implements View.OnClickListener {
     }
 
 
-
     @Nullable
     @Override
 
@@ -54,25 +53,34 @@ public class fragmentCarlist extends Fragment implements View.OnClickListener {
         mAuth = FirebaseAuth.getInstance();
         mAuth.getCurrentUser().getUid();
         databaseReference = FirebaseDatabase.getInstance().getReference(mAuth.getUid());
+
+
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         btn_Delete = view.findViewById(R.id.btndelete);
         btn_Edit = view.findViewById(R.id.btnedit);
+
         Log.e("ListView", "onCreateView: " + mAuth.getUid());
+
         carDataList = new ArrayList<>();
         myAdapter = new carAdapter(carDataList);
         recyclerView.setAdapter(myAdapter);
-        onClick(view);
+
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     CarData item = dataSnapshot.getValue(CarData.class);
                     carDataList.add(item);
+                    //TODO: Update View here
+
                 }
                 myAdapter.notifyDataSetChanged();
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -81,26 +89,21 @@ public class fragmentCarlist extends Fragment implements View.OnClickListener {
 
         });
         return view;
-
-
     }
 
 
-    private void deleteCar(){
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("AllCars").child("BD23974");
-        databaseReference.removeValue();
-        System.out.printf("DeleteCar Metode");
-        Log.e("Delete Car", "deleteCar: ");
-    }
+
 
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btndelete:
-                deleteCar();
+                //deleteCar();
                 System.out.printf("Btn Delete");
-
+            case R.id.btnedit:
+                System.out.printf("edit Delete");
+                break;
+        }
     }
 }
-    }
