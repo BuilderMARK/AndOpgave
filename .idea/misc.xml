@@ -12,9 +12,10 @@
         <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.2695" />
         <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.2695" />
         <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/drawable/side_nav_bar.xml" value="0.2695" />
+        <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/layout/activity_allcarlist.xml" value="0.3029891304347826" />
         <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/layout/activity_loginPage.xml" value="0.25" />
-        <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
         <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/layout/all_car_list_fragment.xml" value="0.33" />
         <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/layout/app_bar_main.xml" value="0.18802083333333333" />
@@ -31,8 +32,8 @@
         <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/layout/private_car_holder.xml" value="0.31431159420289856" />
         <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/layout/rowitem.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/layout/rowitem1.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/menu/activity_main_drawer.xml" value="0.33" />
-        <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/menu/main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/menu/activity_main_drawer.xml" value="0.25" />
+        <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/menu/main.xml" value="0.22" />
         <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.154" />
         <entry key="..\:/Users/kaspe/AndroidStudioProjects/AndOpgave/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.154" />
         <entry key="..\:/Users/markh/AndroidStudioProjects/AndOpgave/app/src/main/res/layout/content_main.xml" value="0.36666666666666664" />

@@ -1,4 +1,4 @@
-package com.example.andopgave.WebService;
+package com.example.andopgave.model.Data.WebService;
 
 import com.example.andopgave.model.Data.CarData;
 

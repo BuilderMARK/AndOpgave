@@ -1,4 +1,4 @@
-package com.example.andopgave.WebService;
+package com.example.andopgave.model.Data.WebService;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -24,9 +24,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.andopgave.MainActivity;
 import com.example.andopgave.databinding.FragmentCreateCarBinding;
 import com.example.andopgave.model.Data.CarData;
 import com.example.andopgave.model.Data.DAO;
+import com.example.andopgave.ui.login.Login;
+import com.example.andopgave.ui.login.SignUp;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,7 +42,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.UUID;
 
-public class CreateCar extends Fragment  {
+public class CreateCar extends Fragment {
 
     private Button btn_Search, btn_Create, btn_Cancel, btn_Picture;
     private EditText et_seacrhReg, et_price, et_regNumber, et_make, et_model, et_modelYear;
@@ -47,7 +50,7 @@ public class CreateCar extends Fragment  {
     private CreateCarViewModelImpl mViewModel;
     private ImageView imageView;
 
-    private static final int PICK_IMAGE_REQUEST =1;
+    private static final int PICK_IMAGE_REQUEST = 1;
     private Uri imageUrl;
 
     //FIREBASE HERE
@@ -56,6 +59,7 @@ public class CreateCar extends Fragment  {
     private FirebaseAuth mAuth;
 
     FirebaseStorage storage;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -68,11 +72,6 @@ public class CreateCar extends Fragment  {
 
         mDatabase = DAO.getmDatabase();
         mAuth = DAO.getmAuth();
-
-
-
-
-
 
 
         return root;
@@ -125,45 +124,42 @@ public class CreateCar extends Fragment  {
             mDatabase.getReference().child(mAuth.getCurrentUser().getUid()).child(carData.getRegistration_number()).setValue(carData);
             Log.e("Database", "Uploaded til database " + carData.getRegistration_number() + " " + carData.make + " " + carData.model);
             mDatabase.getReference().child("AllCars").child(carData.getRegistration_number()).setValue(carData);
+
         });
         btn_Picture.setOnClickListener(view -> {
 
-mGetContent.launch("image/*");
+            mGetContent.launch("image/*");
 
         });
     }
 
-public void UploadImage(){
-        if (imageUrl != null ){
+    public void UploadImage() {
+        if (imageUrl != null) {
             StorageReference storageReference = storage.getReference().child("images/" + UUID.randomUUID().toString());
-storageReference.putFile(imageUrl).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-    @Override
-    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-        if (task.isSuccessful()){
-            //Image upload
-            System.out.println("On Complete Working");
-        } else {
-            System.out.println("Do not work");
+            storageReference.putFile(imageUrl).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        //Image upload
+                        System.out.println("On Complete Working");
+                    } else {
+                        System.out.println("Do not work");
+                    }
+                }
+            });
         }
+
     }
-});
+
+    ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<android.net.Uri>() {
+        @Override
+        public void onActivityResult(android.net.Uri result) {
+            if (result != null) {
+                imageView.setImageURI(result);
+                imageUrl = result;
+            }
         }
-
-}
-
- ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<android.net.Uri>() {
-     @Override
-     public void onActivityResult(android.net.Uri result) {
-         if (result != null){
-             imageView.setImageURI(result);
-             imageUrl = result;
-         }
-     }
- });
-
-
-
-
+    });
 
 
     @Override
