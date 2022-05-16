@@ -1,19 +1,20 @@
 package com.example.andopgave.model.Data;
 
 public class CarData {
-    public String registration_number, make,model;
+    public String registration_number, make,model,url;
     public int model_year,price;
 
     public CarData() {
     }
 
-    public CarData(String registration_number, String make, String model, int model_year,int price)
+    public CarData(String registration_number, String make, String model,String url, int model_year,int price)
     {
         this.registration_number = registration_number;
         this.make = make;
         this.model = model;
         this.model_year = model_year;
         this.price = price;
+        this.url = url;
     }
 
     public String getRegistration_number() {
@@ -54,5 +55,13 @@ public class CarData {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
