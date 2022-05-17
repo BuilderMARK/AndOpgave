@@ -27,11 +27,11 @@ Gennemførte user stories er market med "✔" symbolet
 11. Som en bruger jeg kunne søge efter bestemte salgsopslag.
   
 12. Som bruger vil jeg kunne sortere mellem salgsopslag.
-13. (✔)SOm en bruger vil jeg have mulighed for at kunne se alle mine opslag samlet 1 sted 
+13. (✔)Som en bruger vil jeg have mulighed for at kunne se alle mine opslag samlet 1 sted 
 13. 
 
 
-Nedenfor ses eR diagramet for appen:
+Nedenfor ses ER diagramet for appen:
                                                                                                                 
 ![image](https://user-images.githubusercontent.com/73698747/167742264-41458754-49eb-4928-884d-7e4f0d2f62a0.png)
 
