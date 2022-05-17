@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import com.example.andopgave.R;
 import com.example.andopgave.model.Data.CarData;
-import com.example.andopgave.model.Data.DAO;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -45,30 +44,26 @@ public class fragmentCarlist extends Fragment implements View.OnClickListener {
     }
 
 
+
     @Nullable
     @Override
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_carlist_fragment, container, false);
-        mAuth = DAO.getmAuth();
+        mAuth = FirebaseAuth.getInstance();
         mAuth.getCurrentUser().getUid();
-        databaseReference = DAO.getmDatabase().getReference(mAuth.getUid());
-
-
+        databaseReference = FirebaseDatabase.getInstance().getReference(mAuth.getUid());
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
         btn_Delete = view.findViewById(R.id.btndelete);
         btn_Edit = view.findViewById(R.id.btnedit);
-
         Log.e("ListView", "onCreateView: " + mAuth.getUid());
-
         carDataList = new ArrayList<>();
         myAdapter = new carAdapter(carDataList);
         recyclerView.setAdapter(myAdapter);
-
+        onClick(view);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -76,12 +71,9 @@ public class fragmentCarlist extends Fragment implements View.OnClickListener {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     CarData item = dataSnapshot.getValue(CarData.class);
                     carDataList.add(item);
-                    //TODO: Update View here
-
                 }
                 myAdapter.notifyDataSetChanged();
             }
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -90,21 +82,26 @@ public class fragmentCarlist extends Fragment implements View.OnClickListener {
 
         });
         return view;
+
+
     }
 
 
-
+    private void deleteCar(){
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("AllCars").child("BD23974");
+        databaseReference.removeValue();
+        System.out.printf("DeleteCar Metode");
+        Log.e("Delete Car", "deleteCar: ");
+    }
 
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
+        switch (view.getId()){
             case R.id.btndelete:
-                //deleteCar();
+                deleteCar();
                 System.out.printf("Btn Delete");
-            case R.id.btnedit:
-                System.out.printf("edit Delete");
-                break;
-        }
+
     }
 }
+    }

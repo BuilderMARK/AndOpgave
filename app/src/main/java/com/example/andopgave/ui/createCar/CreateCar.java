@@ -2,19 +2,9 @@ package com.example.andopgave.ui.createCar;
 
 import static android.app.Activity.RESULT_OK;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,44 +12,49 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.example.andopgave.MainActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
+
+import com.example.andopgave.R;
 import com.example.andopgave.databinding.FragmentCreateCarBinding;
 import com.example.andopgave.model.Data.CarData;
-import com.example.andopgave.model.Data.DAO;
-import com.example.andopgave.ui.login.Login;
-import com.example.andopgave.ui.login.SignUp;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
 import java.util.UUID;
 
-public class CreateCar extends Fragment {
+import javax.xml.transform.Result;
 
-    private Button btn_Search, btn_Create, btn_Cancel, btn_Picture;
+public class CreateCar extends Fragment  {
+
+    private Button btn_Search, btn_Create, btn_Upload, btn_Picture,btn_Cancel;
     private EditText et_seacrhReg, et_price, et_regNumber, et_make, et_model, et_modelYear;
     private FragmentCreateCarBinding binding;
     private CreateCarViewModelImpl mViewModel;
-    private ImageView imageView;
-
-    private static final int PICK_IMAGE_REQUEST = 1;
-    private Uri imageUrl;
-
-    //FIREBASE HERE
-
-    private FirebaseDatabase mDatabase;
+    private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
 
-    FirebaseStorage storage;
+    private ImageView imageView;
+    private Uri filePath;
+    private final int PICK_IMAGE_REQUEST = 1;
 
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -69,9 +64,14 @@ public class CreateCar extends Fragment {
         bindings();
         observer();
         onClickListeners();
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
 
-        mDatabase = DAO.getmDatabase();
-        mAuth = DAO.getmAuth();
+
+
+
 
 
         return root;
@@ -101,8 +101,9 @@ public class CreateCar extends Fragment {
         //Knapper
         btn_Search = binding.BtnSearchCar;
         btn_Create = binding.BtnCreateCar;
-        btn_Picture = binding.btnPicture;
-        //btn_Cancel = binding.BtnCancel;
+        btn_Picture = binding.btnFindpicture;
+       btn_Upload = binding.btnUploadPicture;
+       btn_Cancel = binding.cancelButton;
         // TODO: Hjælp mark (:
 
     }
@@ -111,8 +112,12 @@ public class CreateCar extends Fragment {
         btn_Search.setOnClickListener(view -> {
             mViewModel.SearchForCarWithPlate(et_seacrhReg.getText().toString());
             Log.i("OnclickCar", "onClickListeners: " + et_seacrhReg.toString() + mAuth.getCurrentUser().getUid());
-            UploadImage();
+
         });
+        btn_Cancel.setOnClickListener(view -> {
+            Navigation.findNavController(view).navigate(R.id.nav_dashBoard);
+        });
+
         btn_Create.setOnClickListener(view -> {
             CarData carData = new CarData();
             carData.registration_number = et_regNumber.getText().toString();
@@ -121,51 +126,68 @@ public class CreateCar extends Fragment {
             carData.model_year = Integer.parseInt(et_modelYear.getText().toString());
             carData.price = Integer.parseInt(et_price.getText().toString());
             //Pushing to firebase
-            mDatabase.getReference().child(mAuth.getCurrentUser().getUid()).child(carData.getRegistration_number()).setValue(carData);
+            mDatabase.child(mAuth.getCurrentUser().getUid()).child(carData.getRegistration_number()).setValue(carData);
             Log.e("Database", "Uploaded til database " + carData.getRegistration_number() + " " + carData.make + " " + carData.model);
-            mDatabase.getReference().child("AllCars").child(carData.getRegistration_number()).setValue(carData);
+            mDatabase.child("AllCars").child(carData.getRegistration_number()).setValue(carData);
+
+
+            Navigation.findNavController(view).navigate(R.id.nav_dashBoard);
 
         });
-        btn_Picture.setOnClickListener(view -> {
-
-            mGetContent.launch("image/*");
+        btn_Upload.setOnClickListener(view -> {
 
         });
-    }
 
-    public void UploadImage() {
-        if (imageUrl != null) {
-            StorageReference storageReference = storage.getReference().child("images/" + UUID.randomUUID().toString());
-            storageReference.putFile(imageUrl).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        //Image upload
-                        System.out.println("On Complete Working");
-                    } else {
-                        System.out.println("Do not work");
-                    }
-                }
-            });
-        }
-
-    }
-
-    ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<android.net.Uri>() {
-        @Override
-        public void onActivityResult(android.net.Uri result) {
-            if (result != null) {
-                imageView.setImageURI(result);
-                imageUrl = result;
+        btn_Picture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseImage();
+                System.out.println("Filepath er :" + filePath + "\n"+"Pick Image Request er : "+ PICK_IMAGE_REQUEST
+                );
             }
-        }
-    });
+        });
 
+    }
+
+
+
+
+
+
+    private void chooseImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null){
+            filePath = data.getData();
+            imageView.setImageURI(filePath);
+            uploadpic();
+        }
+    }
+
+    private void uploadpic() {
+        final String randomkey = UUID.randomUUID().toString();
+        StorageReference storageReference1 = storageReference.child("images/");
+        storageReference1.putFile(filePath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+
+                System.out.println("succes");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                System.out.println("not a succes");
+            }
+        });
+
+
     }
 
 }
