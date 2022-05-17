@@ -13,7 +13,8 @@
         tools:layout="@layout/fragment_create_car" >
         <action
             android:id="@+id/action_nav_createCar_to_nav_dashBoard"
-            app:destination="@id/nav_dashBoard" />
+            app:destination="@id/nav_dashBoard"
+            app:launchSingleTop="true" />
     </fragment>
     <fragment
         android:id="@+id/nav_dashBoard"
@@ -25,4 +26,10 @@
         android:name="com.example.andopgave.ui.fragmentcarlist.fragmentCarlist"
         android:label="Your Cars"
         tools:layout="@layout/fragment_carlist_fragment" />
+    <fragment
+        android:id="@+id/nav_Logout"
+        android:name="com.example.andopgave.ui.logout.logout"
+        android:label="Log out"
+        tools:layout="@layout/fragment_logout"
+        />
 </navigation>

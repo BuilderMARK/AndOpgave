@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_createCar,R.id.nav_dashBoard, R.id.nav_fragmentCarlist)
+                R.id.nav_createCar,R.id.nav_dashBoard, R.id.nav_fragmentCarlist,R.id.nav_Logout)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -72,9 +72,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             navUserMail.setText(Username);
         }
-
-
-
 
     }
 

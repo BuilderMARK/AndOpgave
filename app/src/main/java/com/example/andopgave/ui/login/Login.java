@@ -46,9 +46,15 @@ EditText editTextEmail, editTextPassword;
         btn_signUp.setOnClickListener(view -> {
             startActivity(new Intent (Login.this, SignUp.class));
             Log.e("OnClickListener sign up", "onCreate: " );
+            logout();
 
         });
 
+
+    }
+
+    private void logout() {
+        mAuth.signOut();
     }
 
     private void loginUser() {
@@ -77,6 +83,8 @@ EditText editTextEmail, editTextPassword;
                 }
             });
     }
+
+
 
 
     //On click skifter view her, og det gør den ved en switch, Kig startActivity
