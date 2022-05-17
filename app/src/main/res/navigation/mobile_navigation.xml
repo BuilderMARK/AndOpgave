@@ -23,6 +23,6 @@
     <fragment
         android:id="@+id/nav_fragmentCarlist"
         android:name="com.example.andopgave.ui.fragmentcarlist.fragmentCarlist"
-        android:label="fragment_carlist_fragment"
+        android:label="Your Cars"
         tools:layout="@layout/fragment_carlist_fragment" />
 </navigation>

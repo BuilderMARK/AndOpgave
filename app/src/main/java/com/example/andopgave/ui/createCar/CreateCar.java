@@ -16,8 +16,12 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
+import com.example.andopgave.R;
 import com.example.andopgave.databinding.FragmentCreateCarBinding;
 import com.example.andopgave.model.Data.CarData;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,7 +42,7 @@ import javax.xml.transform.Result;
 
 public class CreateCar extends Fragment  {
 
-    private Button btn_Search, btn_Create, btn_Upload, btn_Picture;
+    private Button btn_Search, btn_Create, btn_Upload, btn_Picture,btn_Cancel;
     private EditText et_seacrhReg, et_price, et_regNumber, et_make, et_model, et_modelYear;
     private FragmentCreateCarBinding binding;
     private CreateCarViewModelImpl mViewModel;
@@ -99,6 +103,7 @@ public class CreateCar extends Fragment  {
         btn_Create = binding.BtnCreateCar;
         btn_Picture = binding.btnFindpicture;
        btn_Upload = binding.btnUploadPicture;
+       btn_Cancel = binding.cancelButton;
         // TODO: Hjælp mark (:
 
     }
@@ -109,6 +114,10 @@ public class CreateCar extends Fragment  {
             Log.i("OnclickCar", "onClickListeners: " + et_seacrhReg.toString() + mAuth.getCurrentUser().getUid());
 
         });
+        btn_Cancel.setOnClickListener(view -> {
+            Navigation.findNavController(view).navigate(R.id.nav_dashBoard);
+        });
+
         btn_Create.setOnClickListener(view -> {
             CarData carData = new CarData();
             carData.registration_number = et_regNumber.getText().toString();
@@ -120,6 +129,10 @@ public class CreateCar extends Fragment  {
             mDatabase.child(mAuth.getCurrentUser().getUid()).child(carData.getRegistration_number()).setValue(carData);
             Log.e("Database", "Uploaded til database " + carData.getRegistration_number() + " " + carData.make + " " + carData.model);
             mDatabase.child("AllCars").child(carData.getRegistration_number()).setValue(carData);
+
+
+            Navigation.findNavController(view).navigate(R.id.nav_dashBoard);
+
         });
         btn_Upload.setOnClickListener(view -> {
 
