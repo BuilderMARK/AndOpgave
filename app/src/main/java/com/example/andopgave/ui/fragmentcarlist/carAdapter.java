@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.andopgave.MainActivity;
@@ -69,6 +70,7 @@ public class carAdapter extends RecyclerView.Adapter<carAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     deleteCar(CurrentPlate);
+                    Navigation.findNavController(view).navigate(R.id.nav_dashBoard);
                 }
             });
         }

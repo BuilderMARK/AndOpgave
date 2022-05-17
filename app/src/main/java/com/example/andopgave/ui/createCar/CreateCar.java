@@ -40,9 +40,9 @@ import java.util.UUID;
 
 import javax.xml.transform.Result;
 
-public class CreateCar extends Fragment  {
+public class CreateCar extends Fragment {
 
-    private Button btn_Search, btn_Create, btn_Upload, btn_Picture,btn_Cancel;
+    private Button btn_Search, btn_Create, btn_Upload, btn_Picture, btn_Cancel;
     private EditText et_seacrhReg, et_price, et_regNumber, et_make, et_model, et_modelYear;
     private FragmentCreateCarBinding binding;
     private CreateCarViewModelImpl mViewModel;
@@ -55,6 +55,7 @@ public class CreateCar extends Fragment  {
 
     private FirebaseStorage storage;
     private StorageReference storageReference;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -68,10 +69,6 @@ public class CreateCar extends Fragment  {
         storageReference = storage.getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
-
-
-
-
 
 
         return root;
@@ -93,18 +90,18 @@ public class CreateCar extends Fragment  {
         et_make = binding.make;
         et_model = binding.model;
         et_modelYear = binding.modelYear;
-        //ImageView
-        imageView = binding.imageView;
+        //ImageView - NOT USED ATM
+        //imageView = binding.imageView;
         //EditText
         et_seacrhReg = binding.editTextTextRegNub;
         et_price = binding.editPrice;
         //Knapper
         btn_Search = binding.BtnSearchCar;
         btn_Create = binding.BtnCreateCar;
-        btn_Picture = binding.btnFindpicture;
-       btn_Upload = binding.btnUploadPicture;
-       btn_Cancel = binding.cancelButton;
-        // TODO: Hjælp mark (:
+        //btn_Picture = binding.btnFindpicture;  - NOT USED ATM
+        //btn_Upload = binding.btnUploadPicture;  - NOT USED ATM
+        btn_Cancel = binding.cancelButton;
+
 
     }
 
@@ -134,24 +131,19 @@ public class CreateCar extends Fragment  {
             Navigation.findNavController(view).navigate(R.id.nav_dashBoard);
 
         });
-        btn_Upload.setOnClickListener(view -> {
 
-        });
+        /*btn_Upload.setOnClickListener(view -> {});   -- NOT USED ATM
 
         btn_Picture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 chooseImage();
-                System.out.println("Filepath er :" + filePath + "\n"+"Pick Image Request er : "+ PICK_IMAGE_REQUEST
+                System.out.println("Filepath er :" + filePath + "\n" + "Pick Image Request er : " + PICK_IMAGE_REQUEST
                 );
             }
-        });
+        });*/
 
     }
-
-
-
-
 
 
     private void chooseImage() {
@@ -164,7 +156,7 @@ public class CreateCar extends Fragment  {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null){
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
             filePath = data.getData();
             imageView.setImageURI(filePath);
             uploadpic();

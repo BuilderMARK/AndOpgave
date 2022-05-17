@@ -58,7 +58,7 @@ public class fragmentCarlist extends Fragment implements View.OnClickListener {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         btn_Delete = view.findViewById(R.id.btndelete);
-        btn_Edit = view.findViewById(R.id.btnedit);
+        //btn_Edit = view.findViewById(R.id.btnedit);   - Not used ATM
         Log.e("ListView", "onCreateView: " + mAuth.getUid());
         carDataList = new ArrayList<>();
         myAdapter = new carAdapter(carDataList);
@@ -92,6 +92,7 @@ public class fragmentCarlist extends Fragment implements View.OnClickListener {
         databaseReference.removeValue();
         System.out.printf("DeleteCar Metode");
         Log.e("Delete Car", "deleteCar: ");
+
     }
 
 

@@ -199,6 +199,7 @@
         app:layout_constraintTop_toTopOf="@+id/BtnCreateCar"
         app:layout_constraintVertical_bias="0.0" />
 
+    <!-- BUTTON FOR IMAGE UPLOAD: Not working RN
     <Button
         android:id="@+id/btn_findpicture"
         android:layout_width="98dp"
@@ -233,7 +234,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.842"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        tools:src="@tools:sample/backgrounds/scenic" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
