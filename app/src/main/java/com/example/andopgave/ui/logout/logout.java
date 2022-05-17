@@ -50,7 +50,7 @@ public class logout extends Fragment {
     private void onClickListeners() {
         btn_Logout.setOnClickListener(view -> {
             mViewModel.logout();
-            Toast.makeText(getContext(), "Bla",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Logged out",Toast.LENGTH_SHORT).show();
             startActivity(new Intent (getActivity(), Login.class));
         });
 
