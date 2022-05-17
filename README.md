@@ -7,6 +7,7 @@ https://www.youtube.com/watch?v=66F8WwxAnPs
 Gennemførte user stories er market med "✔" symbolet
 
 1. (✔) Som en bruger vil jeg have mulighed for at Oprette et salgsoplæg.
+
 2. (✔)Som en bruger vil jeg kunne finde infomation omkring mit køretøj, via nummerpalden så salget af bilen bliver nemmere.
  
 3.  Som en bruger skal jeg have mulighed for at se kontaktoplysninger så jeg kan kontakte en person, som har noget til salg på siden.
@@ -27,8 +28,8 @@ Gennemførte user stories er market med "✔" symbolet
 11. Som en bruger jeg kunne søge efter bestemte salgsopslag.
   
 12. Som bruger vil jeg kunne sortere mellem salgsopslag.
-13. (✔)Som en bruger vil jeg have mulighed for at kunne se alle mine opslag samlet 1 sted 
-13. 
+
+13. (✔)Som en bruger vil jeg have mulighed for at kunne se alle mine opslag samlet på et sted 
 
 
 Nedenfor ses ER diagramet for appen:
