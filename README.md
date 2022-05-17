@@ -31,6 +31,8 @@ Gennemførte user stories er market med "✔" symbolet
 
 13. (✔)Som en bruger vil jeg have mulighed for at kunne se alle mine opslag samlet på et sted 
 
+14. (✔)Som en bruger vil jeg have mulighed for at kunne logge ud af min account 
+
 
 Nedenfor ses ER diagramet for appen:
                                                                                                                 
