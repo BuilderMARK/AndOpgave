@@ -30,5 +30,5 @@ Gennemførte user stories er market med "✔" symbolet
 
 Nedenfor ses et diagram for appen:
                                                                                                                 
-                          ![image](https://user-images.githubusercontent.com/73698747/167742264-41458754-49eb-4928-884d-7e4f0d2f62a0.png)
+![image](https://user-images.githubusercontent.com/73698747/167742264-41458754-49eb-4928-884d-7e4f0d2f62a0.png)
 
