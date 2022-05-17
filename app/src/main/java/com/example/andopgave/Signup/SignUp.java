@@ -1,5 +1,5 @@
 
-package com.example.andopgave.ui.login;
+package com.example.andopgave.Signup;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.andopgave.R;
 import com.example.andopgave.model.Data.DAO;
+import com.example.andopgave.ui.login.Login;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

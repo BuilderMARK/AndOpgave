@@ -22,6 +22,7 @@ import java.util.List;
 
 public class carAdapter extends RecyclerView.Adapter<carAdapter.ViewHolder> {
     private List<CarData> carDataList;
+    private String CurrentPlate = "";
 
 
 
@@ -38,7 +39,7 @@ public class carAdapter extends RecyclerView.Adapter<carAdapter.ViewHolder> {
         return viewHolder;
     }
 
-    String CurrentPlate = "123456666";
+
 
     @Override
     public void onBindViewHolder(@NonNull carAdapter.ViewHolder holder, int position) {
@@ -70,6 +71,7 @@ public class carAdapter extends RecyclerView.Adapter<carAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     deleteCar(CurrentPlate);
+                    System.out.println(CurrentPlate);
                     Navigation.findNavController(view).navigate(R.id.nav_dashBoard);
                 }
             });
@@ -85,7 +87,7 @@ public class carAdapter extends RecyclerView.Adapter<carAdapter.ViewHolder> {
         DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference(mAuth.getCurrentUser().getUid()).child(nummerplade);
         databaseReference2.removeValue();
 
-        System.out.printf("DeleteCar Metode");
+        System.out.printf("DeleteCar Metode ");
         Log.e("Delete Car", "deleteCar: ");
     }
 

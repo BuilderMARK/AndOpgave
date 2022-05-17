@@ -15,8 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.andopgave.MainActivity;
 import com.example.andopgave.R;
+import com.example.andopgave.Signup.SignUp;
 import com.example.andopgave.model.Data.DAO;
-import com.example.andopgave.ui.home.HomeFragment;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,7 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity  {
 FirebaseAuth mAuth;
-Button btn_googleLogin, btn_login, btn_signUp;
+Button btn_login, btn_signUp;
 EditText editTextEmail, editTextPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,22 +41,16 @@ EditText editTextEmail, editTextPassword;
 
         btn_login.setOnClickListener(view -> {
             loginUser();
-
         });
 
         btn_signUp.setOnClickListener(view -> {
             startActivity(new Intent (Login.this, SignUp.class));
             Log.e("OnClickListener sign up", "onCreate: " );
-            logout();
-
         });
 
 
     }
 
-    private void logout() {
-        mAuth.signOut();
-    }
 
     private void loginUser() {
         String Email,Password;

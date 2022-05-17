@@ -22,7 +22,7 @@
             android:name=".ui.fragmentcarlist.Carlist"
             android:exported="false" />
         <activity
-            android:name=".ui.login.SignUp"
+            android:name=".Signup.SignUp"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

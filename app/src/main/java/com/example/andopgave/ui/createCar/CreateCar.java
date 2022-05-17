@@ -53,8 +53,7 @@ public class CreateCar extends Fragment {
     private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 1;
 
-    private FirebaseStorage storage;
-    private StorageReference storageReference;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -65,8 +64,8 @@ public class CreateCar extends Fragment {
         bindings();
         observer();
         onClickListeners();
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
+        mViewModel.storage = FirebaseStorage.getInstance();
+        mViewModel.storageReference = mViewModel.storage.getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
 
@@ -75,7 +74,7 @@ public class CreateCar extends Fragment {
     }
 
     private void observer() {
-        mViewModel.getCarDataFromPlate().observe(getViewLifecycleOwner(), carData -> {
+            mViewModel.getCarDataFromPlate().observe(getViewLifecycleOwner(), carData -> {
             et_regNumber.setText(carData.getRegistration_number());
             et_make.setText(carData.getMake());
             et_model.setText(carData.getModel());
@@ -146,7 +145,7 @@ public class CreateCar extends Fragment {
     }
 
 
-    private void chooseImage() {
+ /*   private void chooseImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -161,25 +160,8 @@ public class CreateCar extends Fragment {
             imageView.setImageURI(filePath);
             uploadpic();
         }
-    }
-
-    private void uploadpic() {
-        final String randomkey = UUID.randomUUID().toString();
-        StorageReference storageReference1 = storageReference.child("images/");
-        storageReference1.putFile(filePath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-
-                System.out.println("succes");
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                System.out.println("not a succes");
-            }
-        });
+    }*/
 
 
-    }
 
 }
