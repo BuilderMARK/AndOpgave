@@ -2,7 +2,7 @@
 Ideen er at skabe en platform hvorpå man kan sælge og købe brugte biler, og får at skabe en samlet platform, hvorpå bilsælgere alle kan oprette deres announcer. Derved får slutbrugeren mulighed for at se hele biludvalget uden at skulle besøge mange forskellige hjemmesider.
 
 En kort gennemgang af projektet: 
-https://www.youtube.com/watch?v=66F8WwxAnPs
+https://www.youtube.com/watch?v=66F8WwxAnPs 
 
 Gennemførte user stories er market med "✔" symbolet
 
