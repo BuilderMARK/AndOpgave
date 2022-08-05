@@ -4,6 +4,9 @@ Ideen er at skabe en platform hvorpå man kan sælge og købe brugte biler, og f
 En kort gennemgang af projektet: 
 https://www.youtube.com/watch?v=66F8WwxAnPs 
 
+Api delen er med til hjælpe slutbrugen med at hurtigt at kunne sælge sin bil, ved hjælpe af nummerpladen, ud fra nummerpladen kan der ses mærke, model, årgang mm. 
+Derudover kan der ses hvornår bilen er blevet synet, dog ikke brugt i projecket endnu. 
+
 Gennemførte user stories er market med "✔" symbolet
 
 1. (✔) Som en bruger vil jeg have mulighed for at Oprette et salgsoplæg.
